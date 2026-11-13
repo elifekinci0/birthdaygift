@@ -1,0 +1,184 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle, #24213d, #090914);
+    color: white;
+    font-family: Georgia, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    padding: 25px;
+}
+
+h1 {
+    font-size: clamp(25px, 5vw, 38px);
+    margin-bottom: 20px;
+    color: #f8dce9;
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #f4c6dc;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin: 15px auto;
+    max-width: 550px;
+}
+
+button {
+    background: #c77da3;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    color: white;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e6a5c5;
+    transform: scale(1.05);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* Kalp alanı */
+#heart {
+    position: relative;
+    width: min(92vw, 520px);
+    height: 410px;
+    margin: 0 auto;
+    transition: transform 1s ease;
+}
+
+#heart:hover {
+    transform: scale(1.025);
+}
+
+/* Kalbi oluşturan yazılar */
+.heart-word {
+    position: absolute;
+    white-space: nowrap;
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+
+    color: #ffc5df;
+    font-size: clamp(7px, 1.8vw, 10px);
+    font-family: Georgia, serif;
+    letter-spacing: 0;
+    text-shadow: 0 0 7px #ff8fc4;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+    pointer-events: none;
+}
+
+#heart.formed .heart-word {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Son mesaj */
+.message-content {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.message-content .reveal {
+    opacity: 0;
+    animation: revealLine 1.5s ease forwards;
+}
+
+.message-content .reveal:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.message-content .reveal:nth-child(2) {
+    animation-delay: 1.5s;
+}
+
+.message-content .reveal:nth-child(3) {
+    animation-delay: 3.2s;
+}
+
+.message-content .reveal:nth-child(4) {
+    animation-delay: 4.9s;
+}
+
+.message-content .reveal:nth-child(5) {
+    animation-delay: 6.3s;
+}
+
+.message-content .reveal:nth-child(6) {
+    animation-delay: 7.5s;
+}
+
+@keyframes revealLine {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ending-heart {
+    display: inline-block;
+    color: #ff9bc9;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    text-shadow: 0 0 12px #ff8fc4;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.2); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+}
+
+@media (max-width: 600px) {
+    #heart {
+        width: 96vw;
+        height: 340px;
+    }
+
+    .heart-word {
+        font-size: 7px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
